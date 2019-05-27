@@ -1,5 +1,5 @@
 var app = require('express')();
-var http = require('http').Server(app);
+var http = require('http').Server();
 var io = require('socket.io')(http);
 
 var user_num = 0;

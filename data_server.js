@@ -8,7 +8,13 @@ var net = require('net');
 //var url = "211.67.21.100:29999"
 //tcp 连接
 
+//监听客户端 3000端口
+http.listen(3000, function () {
+    console.log('listening on *:3000');
+});
 
+
+// 建立TCP连接 获取机器数据
 var HOST = '211.67.21.100';
 var PORT = 29999;
 var result;
@@ -20,14 +26,10 @@ client.connect(PORT, HOST,()=>{
 
 client.on('data',data =>{
     console.log(data);
-    result = new DataView(data);
-    console.log(result)
+    console.log(data.toString('ascii'));
 })
 
-// 为客户端添加“close”事件处理函数
 client.on('close', function() {
     console.log('Connection closed');
 });
 
-var x = new Buffer([0x30,0x2e,0x35,0x30,0x39,0x36,0x39,0x35]);
-x.readFloatBE(0)
